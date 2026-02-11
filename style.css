@@ -23,8 +23,9 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.2; 
-  overflow: hidden; // Adicionado pra limpar transbordamento
-  max-width: 100%; // Adicionado pra limitar largura
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis; // Corta texto longo pra não sobrepor
 }
 
 /* Linha Superior - Mantendo sua cor inicial f0e9ec */
