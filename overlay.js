@@ -3,11 +3,8 @@ let channel = new URLSearchParams(window.location.search).get('channel') || 'ica
 
 function connect() {
 
-  // Fecha conexão anterior se existir
   if (socket) {
     try {
-      socket.onclose = null;
-      socket.onerror = null;
       socket.close();
     } catch (e) {}
   }
@@ -31,20 +28,35 @@ function connect() {
 
     console.log("Recebido:", msg);
 
+    const linha1 = document.getElementById('linhaSuperior');
+    const linha2 = document.getElementById('linhaInferior');
+
+    // !j1 → Texto Linha Superior
     if (msgLower.startsWith('!j1 ')) {
-      document.getElementById('linhaSuperior').textContent = msg.slice(4).trim();
+      const novoTexto = msg.slice(4).trim() || 'Filme';
+
+      linha1.textContent = '';
+      void linha1.offsetWidth; // força reflow
+      linha1.textContent = novoTexto;
     }
 
+    // !j2 → Texto Linha Inferior
     else if (msgLower.startsWith('!j2 ')) {
-      document.getElementById('linhaInferior').textContent = msg.slice(4).trim();
+      const novoTexto = msg.slice(4).trim() || 'Patrocinador';
+
+      linha2.textContent = '';
+      void linha2.offsetWidth;
+      linha2.textContent = novoTexto;
     }
 
+    // !m1 → Cor Linha Superior
     else if (msgLower.startsWith('!m1 ')) {
-      document.getElementById('linhaSuperior').style.color = msg.slice(4).trim();
+      linha1.style.color = msg.slice(4).trim();
     }
 
+    // !m2 → Cor Linha Inferior
     else if (msgLower.startsWith('!m2 ')) {
-      document.getElementById('linhaInferior').style.color = msg.slice(4).trim();
+      linha2.style.color = msg.slice(4).trim();
     }
   };
 
