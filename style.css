@@ -1,0 +1,38 @@
+body { 
+  background: transparent !important; 
+  margin: 0; 
+  padding: 0;
+  overflow: hidden; 
+  font-family: 'Arial Black', sans-serif;
+}
+
+/* Container do canto */
+.canto-superior {
+  position: absolute;
+  top: 25px;
+  left: 35px;
+  text-align: left;
+}
+
+/* Configuração Geral para as duas linhas */
+#linhaSuperior, #linhaInferior {
+  font-size: 52px;
+  font-weight: 900;
+  text-shadow: 4px 4px 10px #000000;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  /* O segredo do espaçamento da imagem está aqui: */
+  line-height: 1.0; 
+}
+
+/* Linha Superior - Mantendo sua cor inicial f0e9ec */
+#linhaSuperior {
+  color: #ffffff;
+  margin-bottom: 2px; /* Pequeno ajuste para a separação da imagem */
+}
+
+/* Linha Inferior - Mantendo sua cor inicial 12ece1 */
+#linhaInferior {
+  color: #F39CE4;
+}
