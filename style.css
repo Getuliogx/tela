@@ -6,7 +6,6 @@ body {
   font-family: 'Arial Black', sans-serif;
 }
 
-/* Container do canto */
 .canto-superior {
   position: absolute;
   top: 25px;
@@ -14,27 +13,25 @@ body {
   text-align: left;
 }
 
-/* Configuração Geral para as duas linhas */
-#linhaSuperior, #linhaInferior {
+#linhaSuperior, 
+#linhaInferior {
   font-size: 52px;
   font-weight: 900;
   text-shadow: 4px 4px 10px #000000;
   white-space: nowrap;
   margin: 0;
   padding: 0;
-  line-height: 1.2; 
+  line-height: 1.5; /* corrigido */
   overflow: hidden;
   max-width: 100%;
-  text-overflow: ellipsis; // Corta texto longo pra não sobrepor
+  text-overflow: ellipsis;
 }
 
-/* Linha Superior - Mantendo sua cor inicial f0e9ec */
 #linhaSuperior {
   color: #ffffff;
-  margin-bottom: 10px; 
+  margin-bottom: 20px;
 }
 
-/* Linha Inferior - Mantendo sua cor inicial 12ece1 */
 #linhaInferior {
   color: #F39CE4;
 }
