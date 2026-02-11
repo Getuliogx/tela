@@ -22,13 +22,15 @@ body {
   white-space: nowrap;
   margin: 0;
   padding: 0;
-  line-height: 1.2; /* Aumentado para espaçamento melhor */
+  line-height: 1.2; 
+  overflow: hidden; // Adicionado pra limpar transbordamento
+  max-width: 100%; // Adicionado pra limitar largura
 }
 
 /* Linha Superior - Mantendo sua cor inicial f0e9ec */
 #linhaSuperior {
   color: #ffffff;
-  margin-bottom: 10px; /* Aumentado para separar as linhas */
+  margin-bottom: 10px; 
 }
 
 /* Linha Inferior - Mantendo sua cor inicial 12ece1 */
