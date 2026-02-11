@@ -1,14 +1,24 @@
-let socket;
+let socket = null;
 let channel = new URLSearchParams(window.location.search).get('channel') || 'icarolinaporto';
 
 function connect() {
+
+  // Fecha conexão anterior se existir
+  if (socket) {
+    try {
+      socket.onclose = null;
+      socket.onerror = null;
+      socket.close();
+    } catch (e) {}
+  }
+
   socket = new WebSocket('wss://xxxx-r0pa.onrender.com');
 
   socket.onopen = () => {
-    console.log('Overlay conectada ao servidor');
-    socket.send(JSON.stringify({ 
-      action: 'join', 
-      channel: channel.toLowerCase() 
+    console.log('Overlay conectada');
+    socket.send(JSON.stringify({
+      action: 'join',
+      channel: channel.toLowerCase()
     }));
   };
 
@@ -19,40 +29,31 @@ function connect() {
     const msg = data.message.trim();
     const msgLower = msg.toLowerCase();
 
-    console.log("Recebido:", msg); // DEBUG (ver se está duplicando)
+    console.log("Recebido:", msg);
 
-    // !j1 → Linha Superior
     if (msgLower.startsWith('!j1 ')) {
-      const input1 = msg.slice(4).trim();
-      document.getElementById('linhaSuperior').textContent = input1;
+      document.getElementById('linhaSuperior').textContent = msg.slice(4).trim();
     }
 
-    // !j2 → Linha Inferior
     else if (msgLower.startsWith('!j2 ')) {
-      const input2 = msg.slice(4).trim();
-      document.getElementById('linhaInferior').textContent = input2;
+      document.getElementById('linhaInferior').textContent = msg.slice(4).trim();
     }
 
-    // !m1 → cor Linha Superior
     else if (msgLower.startsWith('!m1 ')) {
-      const color1 = msg.slice(4).trim();
-      document.getElementById('linhaSuperior').style.color = color1;
+      document.getElementById('linhaSuperior').style.color = msg.slice(4).trim();
     }
 
-    // !m2 → cor Linha Inferior
     else if (msgLower.startsWith('!m2 ')) {
-      const color2 = msg.slice(4).trim();
-      document.getElementById('linhaInferior').style.color = color2;
+      document.getElementById('linhaInferior').style.color = msg.slice(4).trim();
     }
   };
 
   socket.onclose = () => {
-    console.log('Conexão perdida, reconectando em 2 segundos...');
-    setTimeout(connect, 2000);
+    console.log('Reconectando em 3s...');
+    setTimeout(connect, 3000);
   };
 
-  socket.onerror = (err) => {
-    console.log('Erro no WebSocket:', err);
+  socket.onerror = () => {
     socket.close();
   };
 }
