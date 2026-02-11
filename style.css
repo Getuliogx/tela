@@ -22,14 +22,13 @@ body {
   white-space: nowrap;
   margin: 0;
   padding: 0;
-  /* O segredo do espaçamento da imagem está aqui: */
-  line-height: 1.0; 
+  line-height: 1.2; /* Aumentado para espaçamento melhor */
 }
 
 /* Linha Superior - Mantendo sua cor inicial f0e9ec */
 #linhaSuperior {
   color: #ffffff;
-  margin-bottom: 2px; /* Pequeno ajuste para a separação da imagem */
+  margin-bottom: 10px; /* Aumentado para separar as linhas */
 }
 
 /* Linha Inferior - Mantendo sua cor inicial 12ece1 */
