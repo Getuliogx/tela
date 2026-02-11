@@ -1,12 +1,11 @@
 let socket;
-let channel = new URLSearchParams(window.location.search).get('channel') || 'icarolinaporto'; // Pega o canal da URL (ex: overlay.html?channel=seucanal) ou default
+let channel = new URLSearchParams(window.location.search).get('channel') || 'icarolinaporto';
 
 function connect() {
-  socket = new WebSocket('wss://xxxx-r0pa.onrender.com'); // Mude para WS remoto ex: 'wss://seu-app.render.com:8080' após hospedar
+  socket = new WebSocket('wss://xxxx-r0pa.onrender.com');
 
   socket.onopen = () => {
     console.log('Overlay conectada ao servidor');
-    // Envia o canal para o server joinar
     socket.send(JSON.stringify({ action: 'join', channel: channel.toLowerCase() }));
   };
 
@@ -20,13 +19,17 @@ function connect() {
     // !j1 → Linha Superior (texto)
     if (msgLower.startsWith('!j1 ')) {
       const input1 = msg.slice(4).trim();
-      document.getElementById('linhaSuperior').innerText = input1;
+      const elem1 = document.getElementById('linhaSuperior');
+      elem1.innerHTML = ''; // Limpa o antigo
+      elem1.innerText = input1; // Adiciona o novo
     }
 
     // !j2 → Linha Inferior (texto)
     else if (msgLower.startsWith('!j2 ')) {
       const input2 = msg.slice(4).trim();
-      document.getElementById('linhaInferior').innerText = input2;
+      const elem2 = document.getElementById('linhaInferior');
+      elem2.innerHTML = ''; // Limpa o antigo
+      elem2.innerText = input2; // Adiciona o novo
     }
 
     // !m1 → cor da Linha Superior
@@ -44,7 +47,7 @@ function connect() {
 
   socket.onclose = () => {
     console.log('Conexão perdida, tentando reconectar em 2 segundos...');
-    setTimeout(connect, 2000); // Reconexão robusta
+    setTimeout(connect, 2000);
   };
 
   socket.onerror = () => {
