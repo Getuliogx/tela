@@ -20,16 +20,18 @@ function connect() {
     if (msgLower.startsWith('!j1 ')) {
       const input1 = msg.slice(4).trim();
       const elem1 = document.getElementById('linhaSuperior');
-      elem1.innerHTML = ''; // Limpa o antigo
+      elem1.textContent = ''; // Limpa o antigo
       elem1.innerText = input1; // Adiciona o novo
+      elem1.style.display = 'block'; // Força repaint no OBS
     }
 
     // !j2 → Linha Inferior (texto)
     else if (msgLower.startsWith('!j2 ')) {
       const input2 = msg.slice(4).trim();
       const elem2 = document.getElementById('linhaInferior');
-      elem2.innerHTML = ''; // Limpa o antigo
+      elem2.textContent = ''; // Limpa o antigo
       elem2.innerText = input2; // Adiciona o novo
+      elem2.style.display = 'block'; // Força repaint no OBS
     }
 
     // !m1 → cor da Linha Superior
