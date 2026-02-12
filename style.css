@@ -2,7 +2,6 @@ body {
   background: transparent !important; 
   margin: 0; 
   padding: 0;
-  overflow: hidden; 
   font-family: 'Arial Black', sans-serif;
 }
 
@@ -21,19 +20,15 @@ body {
   white-space: nowrap;
   margin: 0;
   padding: 0;
-  line-height: 1.0; /* corrigido */
-  overflow: hidden;
+  line-height: 62px; /* altura real para não cortar */
   max-width: 100%;
-  text-overflow: ellipsis;
 }
 
 #linhaSuperior {
   color: #ffffff;
-  margin-bottom: 20px;
+  margin-bottom: 6px; /* espaço entre as linhas (ajuste em px) */
 }
 
 #linhaInferior {
   color: #F39CE4;
 }
-
-
