@@ -21,7 +21,7 @@ body {
   white-space: nowrap;
   margin: 0;
   padding: 0;
-  line-height: 1.1; /* corrigido */
+  line-height: 1.0; /* corrigido */
   overflow: hidden;
   max-width: 100%;
   text-overflow: ellipsis;
@@ -35,4 +35,5 @@ body {
 #linhaInferior {
   color: #F39CE4;
 }
+
 
